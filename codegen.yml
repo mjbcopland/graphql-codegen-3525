@@ -1,0 +1,36 @@
+overwrite: true
+generates:
+
+  src/base-types.ts:
+    schema: ./src/base.graphql
+    documents: null
+    plugins:
+      - typescript
+      - typescript-resolvers
+      - typescript-operations
+    config:
+      skipTypename: true
+      preResolveTypes: true
+      enumsAsTypes: true
+
+  src/graphql:
+    schema: ./src/base.graphql
+    documents:
+      - ./src/graphql/**/*.ts
+      - '!*.types.d.ts'
+    preset: near-operation-file
+    presetConfig:
+      baseTypesPath: ../base-types.ts
+      extension: .types.d.ts
+    plugins:
+      - typescript-operations
+    config:
+      enumsAsTypes: true
+      skipTypename: true
+
+config:
+  noSchemaStitching: true
+  scalars:
+    ID: string
+    LocalDate: LocalDate
+  maybeValue: T | null | undefined
