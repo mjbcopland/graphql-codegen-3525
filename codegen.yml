@@ -1,6 +1,5 @@
 overwrite: true
 generates:
-
   src/base-types.ts:
     schema: ./src/base.graphql
     documents: null
@@ -17,12 +16,13 @@ generates:
     schema: ./src/base.graphql
     documents:
       - ./src/graphql/**/*.ts
-      - '!*.types.d.ts'
+      - "!*.generated.ts"
     preset: near-operation-file
     presetConfig:
       baseTypesPath: ../base-types.ts
-      extension: .types.d.ts
+      extension: .generated.ts
     plugins:
+      - typescript-document-nodes
       - typescript-operations
     config:
       enumsAsTypes: true

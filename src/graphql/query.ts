@@ -1,8 +1,6 @@
-import gql from 'graphql-tag'
-import { HotelType } from './fragment'
+import { HotelType } from "./fragment";
 
-const query = gql`
-
+const query = /* GraphQL */ `
   query getHotel($id: String!) {
     getHotel(id: $id) {
       ...HotelType
@@ -10,5 +8,4 @@ const query = gql`
   }
 
   ${HotelType}
-
-`
+`;
